@@ -194,10 +194,10 @@
 
     /* POP-UP PENGUNCI BERLANGGANAN */
     #lockOverlay {
-      display: none;
+      display: flex; /* Langsung terkunci */
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.96);
+      background: rgba(15, 23, 42, 0.97);
       z-index: 999999;
       justify-content: center;
       align-items: center;
@@ -209,108 +209,130 @@
       max-width: 440px;
       width: 100%;
       border-radius: 12px;
-      padding: 24px 20px;
+      padding: 22px 20px;
       text-align: center;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      max-height: 92vh;
+      max-height: 94vh;
       overflow-y: auto;
     }
-    .lock-icon { font-size: 40px; margin-bottom: 6px; }
+    .lock-icon { font-size: 38px; margin-bottom: 4px; }
     .lock-title {
       font-size: 19px;
       font-weight: bold;
       color: #b91c1c;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .lock-desc {
       font-size: 12px;
       color: #4b5563;
       line-height: 1.4;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .pricing-box {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
-      padding: 10px 12px;
-      margin-bottom: 12px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
       text-align: left;
     }
     .pricing-title {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
       color: #1a4f80;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
     .pricing-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 6px 0;
+      padding: 5px 0;
       border-bottom: 1px dashed #e2e8f0;
       font-size: 12px;
     }
     .pricing-item:last-child { border-bottom: none; }
-    .pricing-item .badge {
+    .badge {
       background: #dbeafe;
       color: #1e40af;
       font-size: 10px;
       padding: 2px 6px;
       border-radius: 4px;
       font-weight: bold;
-      margin-left: 4px;
     }
-    .pricing-price { font-weight: bold; color: #0f172a; }
-
     .payment-box {
       background: #eff6ff;
       border: 1px dashed #93c5fd;
       border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 14px;
+      padding: 10px;
+      margin-bottom: 12px;
     }
     .qris-img {
-      width: 170px;
-      height: 170px;
+      width: 150px;
+      height: 150px;
       object-fit: contain;
       background: white;
-      padding: 6px;
+      padding: 4px;
       border-radius: 6px;
       border: 1px solid #cbd5e1;
-      margin: 8px auto 6px auto;
+      margin: 6px auto;
       display: block;
     }
     .bank-details {
-      font-size: 12px;
+      font-size: 11px;
       color: #1e293b;
       line-height: 1.5;
       text-align: left;
-      margin-top: 6px;
       border-top: 1px solid #dbeafe;
       padding-top: 6px;
     }
     .btn-wa {
-      display: inline-block;
+      display: block;
       width: 100%;
       background-color: #25d366;
       color: white;
       text-decoration: none;
-      padding: 11px;
+      padding: 10px;
       border-radius: 6px;
       font-weight: bold;
       font-size: 13px;
+      margin-bottom: 12px;
     }
 
-    /* Tombol Rahasia Admin */
-    .admin-unlock-btn {
-      margin-top: 12px;
-      background: none;
-      border: none;
-      color: #94a3b8;
+    /* BOX INPUT PIN AKTIVASI LANGSUNG DI LAYAR */
+    .activation-box {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: left;
+    }
+    .activation-title {
       font-size: 11px;
-      text-decoration: underline;
+      font-weight: bold;
+      color: #92400e;
+      margin-bottom: 6px;
+    }
+    .pin-input-group {
+      display: flex;
+      gap: 6px;
+    }
+    .pin-input {
+      flex: 1;
+      padding: 7px 10px;
+      border: 1px solid #d97706;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .btn-unlock {
+      background: #d97706;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 12px;
       cursor: pointer;
     }
   </style>
@@ -323,28 +345,28 @@
       <div class="lock-icon">🔒</div>
       <div class="lock-title">Akses Invoice Terkunci</div>
       <div class="lock-desc">
-        Masa aktif telah berakhir. Silakan lakukan perpanjangan paket langganan untuk mengaktifkan kembali akses Anda.
+        Akses invoice ini memerlukan aktivasi / perpanjangan langganan. Silakan bayar melalui QRIS/Transfer lalu masukkan PIN aktivasi.
       </div>
 
       <div class="pricing-box">
         <div class="pricing-title">📋 Pilihan Paket Berlangganan</div>
         <div class="pricing-item">
           <span>⏱️ 1 Minggu</span>
-          <span class="pricing-price">Rp 20.000</span>
+          <b>Rp 20.000</b>
         </div>
         <div class="pricing-item">
           <span>📅 1 Bulan <span class="badge">Bayar QRIS</span></span>
-          <span class="pricing-price">Rp 70.000</span>
+          <b>Rp 70.000</b>
         </div>
         <div class="pricing-item">
           <span>⭐ 1 Tahun <span class="badge">Hemat</span></span>
-          <span class="pricing-price">Rp 600.000</span>
+          <b>Rp 600.000</b>
         </div>
       </div>
 
       <div class="payment-box">
-        <strong style="font-size: 12px; color: #1e3a8a;">Scan QRIS untuk Pembayaran Cepat:</strong>
-        <img src="qris.jpg" alt="QRIS Pembayaran" class="qris-img">
+        <strong style="font-size: 11px; color: #1e3a8a;">Scan QRIS Pembayaran:</strong>
+        <img src="qris.jpg" alt="QRIS Pembayaran" class="qris-img" onerror="this.style.display='none'">
         <div class="bank-details">
           <strong>Atau Transfer Bank:</strong><br>
           • Bank Mandiri: <b>1200011259897</b><br>
@@ -352,16 +374,22 @@
         </div>
       </div>
 
-      <a href="https://wa.me/6285157631122?text=Halo%20Admin,%20saya%20sudah%20transfer%20untuk%20perpanjang%20langganan%20invoice" id="waBtn" class="btn-wa" target="_blank">
+      <a href="https://wa.me/6285157631122?text=Halo%20Admin,%20saya%20sudah%20transfer%20untuk%20aktivasi%20invoice" class="btn-wa" target="_blank">
         Konfirmasi Pembayaran via WhatsApp
       </a>
 
-      <!-- Tombol Admin untuk Buka Langsung Tanpa Buka GitHub -->
-      <button class="admin-unlock-btn" onclick="openAdminModal()">🔑 Masukkan PIN Aktivasi (Admin)</button>
+      <!-- Input PIN Langsung di Halaman -->
+      <div class="activation-box">
+        <div class="activation-title">🔑 Sudah Punya PIN Aktivasi?</div>
+        <div class="pin-input-group">
+          <input type="password" id="pinInput" class="pin-input" placeholder="Ketik PIN Admin di sini...">
+          <button class="btn-unlock" onclick="submitPin()">Buka</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="toolbar">
+  <div class="toolbar" id="mainToolbar" style="display: none;">
     <button class="btn btn-success" onclick="addRow()">+ Tambah Barang</button>
     <button class="btn btn-primary" onclick="downloadPDF()">Unduh PDF</button>
   </div>
@@ -448,67 +476,71 @@
 
   <script>
     /* ==========================================================
-       PENGATURAN BERLANGGANAN & BUKA KUNCI ADMIN PIN
+       PENGATURAN KUNCI & PIN AKTIVASI
        ========================================================== */
-    // PIN RAHASIA ANDA (Bisa diganti kapan saja)
-    const ADMIN_PIN = '9977'; 
-
-    // Default batas awal jika belum ada perpanjangan
-    const DEFAULT_EXPIRATION = '2026-09-20';
-    const NOMOR_WHATSAPP = '6285157631122'; 
-
-    function getActiveExpiration() {
-      return localStorage.getItem('invoice_valid_until') || DEFAULT_EXPIRATION;
-    }
+    const ADMIN_PIN = '9977'; // PIN Rahasia Anda
 
     function checkSubscription() {
-      const today = new Date();
-      const expire = new Date(getActiveExpiration());
+      const activeUntil = localStorage.getItem('invoice_valid_until');
       
-      if (today > expire) {
-        document.getElementById('lockOverlay').style.display = 'flex';
-        document.querySelector('.toolbar').style.display = 'none';
-      } else {
-        document.getElementById('lockOverlay').style.display = 'none';
-        document.querySelector('.toolbar').style.display = 'flex';
+      // Jika belum pernah diaktivasi, langsung kunci
+      if (!activeUntil) {
+        lockInvoice();
+        return;
       }
 
-      document.getElementById('waBtn').href = 
-        `https://wa.me/${NOMOR_WHATSAPP}?text=Halo%20Admin,%20saya%20sudah%20transfer%20untuk%20perpanjang%20langganan%20invoice`;
+      const today = new Date();
+      const expire = new Date(activeUntil);
+      
+      if (today > expire) {
+        lockInvoice();
+      } else {
+        unlockInvoice();
+      }
     }
 
-    // Fungsi Admin untuk memperpanjang langsung dari HP tanpa GitHub
-    function openAdminModal() {
-      const inputPin = prompt("Masukkan PIN Rahasia Admin:");
-      if (inputPin === ADMIN_PIN) {
+    function lockInvoice() {
+      document.getElementById('lockOverlay').style.display = 'flex';
+      document.getElementById('mainToolbar').style.display = 'none';
+    }
+
+    function unlockInvoice() {
+      document.getElementById('lockOverlay').style.display = 'none';
+      document.getElementById('mainToolbar').style.display = 'flex';
+    }
+
+    function submitPin() {
+      const pin = document.getElementById('pinInput').value.trim();
+      if (pin === ADMIN_PIN) {
         const pilihan = prompt(
-          "Pilih Perpanjangan:\n1 = Tambah 1 Minggu (7 Hari)\n2 = Tambah 1 Bulan (30 Hari)\n3 = Tambah 1 Tahun (365 Hari)\n\nKetik angka 1, 2, atau 3:"
+          "Pilih Durasi Aktivasi:\n1 = 1 Minggu (7 Hari)\n2 = 1 Bulan (30 Hari)\n3 = 1 Tahun (365 Hari)\n\nKetik angka 1, 2, atau 3:"
         );
         
-        let daysToAdd = 0;
-        if (pilihan === '1') daysToAdd = 7;
-        else if (pilihan === '2') daysToAdd = 30;
-        else if (pilihan === '3') daysToAdd = 365;
+        let days = 0;
+        if (pilihan === '1') days = 7;
+        else if (pilihan === '2') days = 30;
+        else if (pilihan === '3') days = 365;
         else {
-          alert("Pilihan dibatalkan.");
+          alert("Aktivasi dibatalkan.");
           return;
         }
 
-        const newDate = new Date();
-        newDate.setDate(newDate.getDate() + daysToAdd);
-        const yyyy = newDate.getFullYear();
-        const mm = String(newDate.getMonth() + 1).padStart(2, '0');
-        const dd = String(newDate.getDate()).padStart(2, '0');
-        const formattedDate = `${yyyy}-${mm}-${dd}`;
+        const expDate = new Date();
+        expDate.setDate(expDate.getDate() + days);
+        const yyyy = expDate.getFullYear();
+        const mm = String(expDate.getMonth() + 1).padStart(2, '0');
+        const dd = String(expDate.getDate()).padStart(2, '0');
+        const formatted = `${yyyy}-${mm}-${dd}`;
 
-        localStorage.setItem('invoice_valid_until', formattedDate);
-        alert(`Berhasil! Akses invoice aktif kembali sampai: ${formattedDate}`);
-        checkSubscription();
-      } else if (inputPin !== null) {
-        alert("PIN Salah!");
+        localStorage.setItem('invoice_valid_until', formatted);
+        alert(`Sukses! Invoice aktif sampai tanggal: ${formatted}`);
+        unlockInvoice();
+      } else {
+        alert("PIN salah! Silakan periksa kembali atau hubungi admin.");
       }
     }
 
+    // Jalankan pengecekan
     checkSubscription();
 
     /* ==========================================================
